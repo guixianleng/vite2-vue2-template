@@ -94,3 +94,7 @@ chore: v3.4.2
 - 具有更加详细的 body 和 footer，可以清晰的看出某次提交的目的和影响。
 - 可以通过 type 过滤出想要查找的信息，也可以通过关键字快速查找相关提交。
 - 可以直接从 commit 生成 change log。
+
+### 验证提交规范
+
+commitlint 验证提交规则，并通过`husky`的`commit-msg` hook 触发验证提交信息的命令
