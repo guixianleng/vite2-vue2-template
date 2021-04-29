@@ -133,8 +133,10 @@ npm install -g commitizen
 
 ### 1. git bush 无法使用箭头进行选择
 
+第一种情况可以使用：
 - 1 找到 git bash 的安装目录，找到 bash.bashrc 文件，
 
 - 2 在文件的尾部加上：alias vue='winpty vue.cmd'，
 
 - 3 重启 git bash 即可
+第二种直接输入箭头`所在行`的`数字`既可以
