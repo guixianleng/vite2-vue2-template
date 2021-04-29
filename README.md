@@ -125,6 +125,10 @@ npm install -g commitizen
 
 若想偷懒，建议大家用`git cz`来代替`git commit`提交代码，可以保证提交信息规范。
 
+### 参考文献：
+
+- [从0开始搭建前端工程](https://juejin.cn/post/6951649464637636622)
+
 ## 踩坑：
 
 ### 1. git bush 无法使用箭头进行选择
