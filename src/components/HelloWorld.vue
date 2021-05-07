@@ -9,10 +9,8 @@
 
     <button @click="count++">count is: {{ count }}</button>
     <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test hot module replacement.
+      <SvgIcon name="sun"></SvgIcon>
     </p>
-    <SvgIcon name="sun"></SvgIcon>
   </div>
 </template>
 
