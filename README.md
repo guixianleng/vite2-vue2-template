@@ -125,10 +125,6 @@ npm install -g commitizen
 
 若想偷懒，建议大家用`git cz`来代替`git commit`提交代码，可以保证提交信息规范。
 
-### 参考文献：
-
-- [从0开始搭建前端工程](https://juejin.cn/post/6951649464637636622)
-
 ## 踩坑：
 
 ### 1. git bush 无法使用箭头进行选择
@@ -140,3 +136,8 @@ npm install -g commitizen
 
 - 3 重启 git bash 即可
 第二种直接输入箭头`所在行`的`数字`既可以
+
+### 2. vite2.0和ant-design-vue1.x有冲突
+问题描述：https://github.com/vueComponent/ant-design-vue/issues/2745
+
+原因分析：由于`@ant-design/icons`不支持 ES Module 导出导致被 rollup-plugin-commonjs 处理了, 而vite正是由[ES Module](https://cn.vitejs.dev/guide/why.html#the-problems)进行预构建依赖的，而ant-design-vue2.x版本的icon组件不是内置的了，而是单独的`@ant-design/icons-vue`
