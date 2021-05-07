@@ -1,4 +1,4 @@
-# A Vite 2.x + Vue 2.x template starter
+# Vite 2.x + Vue 2.x template
 
 ## 在线预览
 
@@ -14,7 +14,7 @@ https://guixianleng.github.io/vite2-vue2-template/
 - 提交规范：Commitizen + Commitlint
 - 自动部署：GitHub Actions
 
-> 说明：UI 框架本打算使用 ant-design-vue 1.x 版本的，但是使用之后发现兼容不了 vite2.x 具体请查看文末`踩坑`说明
+> 说明：UI 框架本打算使用 ant-design-vue 1.x 版本的，但是使用之后发现兼容不了 vite2.x 具体请查看文末踩坑说明
 
 ## 快速开始
 
@@ -143,7 +143,7 @@ chore: v3.4.2
 
 安装及配置这里不做赘述，
 
-`**注意:**`若提交时候，使用`git cz`自动生成规范的 commit message，需要全局安装`ommitizen`
+**注意**：若提交时候，使用`git cz`自动生成规范的 commit message，需要全局安装`ommitizen`
 
 ```
 npm install -g commitizen
