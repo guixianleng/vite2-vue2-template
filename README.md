@@ -1,5 +1,9 @@
 # A Vite 2.x + Vue 2.x template starter
 
+## 在线预览
+
+https://guixianleng.github.io/vite2-vue2-template/
+
 ## 代码规范
 
 - 集成 EditorConfig 配置
@@ -13,7 +17,7 @@
 
 ## git 规范
 
-### commit message 格式规范
+### 1. commit message 格式规范
 
 commit message 由 Header、Body、Footer 组成。
 
@@ -95,7 +99,7 @@ chore: v3.4.2
 - 可以通过 type 过滤出想要查找的信息，也可以通过关键字快速查找相关提交。
 - 可以直接从 commit 生成 change log。
 
-### 验证提交规范
+### 2. 验证提交规范
 
 #### 1. 使用 Commitizen 实现规范提交
 
@@ -130,14 +134,15 @@ npm install -g commitizen
 ### 1. git bush 无法使用箭头进行选择
 
 第一种情况可以使用：
+
 - 1 找到 git bash 的安装目录，找到 bash.bashrc 文件，
 
 - 2 在文件的尾部加上：alias vue='winpty vue.cmd'，
 
-- 3 重启 git bash 即可
-第二种直接输入箭头`所在行`的`数字`既可以
+- 3 重启 git bash 即可第二种直接输入箭头`所在行`的`数字`既可以
 
-### 2. vite2.0使用不了ant-design-vue1.x版本
+### 2. vite2.0 使用不了 ant-design-vue1.x 版本
+
 问题描述：https://github.com/vueComponent/ant-design-vue/issues/2745
 
-原因分析：由于`@ant-design/icons`不支持 ES Module 导出导致被 rollup-plugin-commonjs 处理了, 而vite正是由[ES Module](https://cn.vitejs.dev/guide/why.html#the-problems)进行预构建依赖的，而ant-design-vue2.x版本的icon组件不是内置的了，而是单独的`@ant-design/icons-vue`
+原因分析：由于`@ant-design/icons`不支持 ES Module 导出导致被 rollup-plugin-commonjs 处理了, 而 vite 正是由[ES Module](https://cn.vitejs.dev/guide/why.html#the-problems)进行预构建依赖的，而 ant-design-vue2.x 版本的 icon 组件不是内置的了，而是单独的`@ant-design/icons-vue`
