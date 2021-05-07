@@ -30,6 +30,8 @@ const config = defineConfig({
     }),
   ],
 
+  base: './',
+
   server: {
     port: 8080,
     open: true,
