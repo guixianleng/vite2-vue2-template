@@ -4,7 +4,45 @@
 
 https://guixianleng.github.io/vite2-vue2-template/
 
-## 代码规范
+## 技术栈
+
+- 构建工具：Vite 2.x
+- 前端框架：Vue 2.x
+- 编程语言：JavaScript
+- Git Hook 工具：husky + lint-staged
+- 代码规范：EditorConfig + Prettier + ESLint + Airbnb JavaScript Style Guide
+- 提交规范：Commitizen + Commitlint
+- 自动部署：GitHub Actions
+
+> 说明：UI 框架本打算使用 ant-design-vue 1.x 版本的，但是使用之后发现兼容不了 vite2.x 具体请查看文末`踩坑`说明
+
+## 快速开始
+
+### 安装依赖
+
+```
+npm install
+
+# or
+
+yarn add
+```
+
+### 启动项目
+
+```
+npm run dev
+```
+
+### 项目打包
+
+```
+npm run build
+```
+
+## 搭建配置
+
+### 代码规范
 
 - 集成 EditorConfig 配置
   - EditorConfig 有助于为不同 IDE 编辑器上处理同一项目的多个开发人员维护一致的编码风格
@@ -15,9 +53,9 @@ https://guixianleng.github.io/vite2-vue2-template/
   - husky —— Git Hook 工具，可以设置在 git 各个阶段（pre-commit、commit-msg、pre-push 等）触发我们的命令。
   - lint-staged —— 在 git 暂存的文件上运行 linters。
 
-## git 规范
+### git 规范
 
-### 1. commit message 格式规范
+#### commit message 格式规范
 
 commit message 由 Header、Body、Footer 组成。
 
