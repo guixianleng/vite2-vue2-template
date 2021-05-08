@@ -9,12 +9,11 @@ https://guixianleng.github.io/vite2-vue2-template/
 - 构建工具：Vite 2.x
 - 前端框架：Vue 2.x
 - 编程语言：JavaScript
+- UI 框架：ant-design-vue 1.7.4
 - Git Hook 工具：husky + lint-staged
 - 代码规范：EditorConfig + Prettier + ESLint + Airbnb JavaScript Style Guide
 - 提交规范：Commitizen + Commitlint
 - 自动部署：GitHub Actions
-
-> 说明：UI 框架本打算使用 ant-design-vue 1.x 版本的，但是使用之后发现兼容不了 vite2.x 具体请查看文末踩坑说明
 
 ## 快速开始
 
@@ -183,4 +182,6 @@ npm install -g commitizen
 
 问题描述：https://github.com/vueComponent/ant-design-vue/issues/2745
 
-原因分析：由于`@ant-design/icons`不支持 ES Module 导出导致被 rollup-plugin-commonjs 处理了, 而 vite 正是由[ES Module](https://cn.vitejs.dev/guide/why.html#the-problems)进行预构建依赖的，而 ant-design-vue2.x 版本的 icon 组件不是内置的了，而是单独的`@ant-design/icons-vue`
+原因分析：由于`@ant-design/icons`不支持 ES Module 导出导致被 rollup-plugin-commonjs 处理了, 而 vite 正是由[ES Module](https://cn.vitejs.dev/guide/why.html#the-problems)进行预构建依赖的，而 ant-design-vue2.x 版本的 icon 组件不是内置的了，而是单独的`@ant-design/icons-vue`。
+
+解决：通过查看源码，在ant-design-vue/lib文件，对esModule进行了兼容处理，所以可以使用在文件进行引入 `import Antd from 'ant-design-vue/lib'` 解决问题

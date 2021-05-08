@@ -1,6 +1,10 @@
 {
-  "name": "vue2-vite-template",
+  "name": "vue2-vite2-template",
   "version": "0.0.0",
+  "author": {
+    "name": "LenGxin",
+    "url": "https://github.com/guixianleng"
+  },
   "scripts": {
     "prepare": "husky install",
     "dev": "vite",
@@ -13,6 +17,9 @@
     "*.{vue,js}": "eslint --fix"
   },
   "dependencies": {
+    "@sentry/tracing": "^6.3.5",
+    "@sentry/vue": "^6.3.5",
+    "ant-design-vue": "1.7.4",
     "vue": "^2.6.12"
   },
   "devDependencies": {

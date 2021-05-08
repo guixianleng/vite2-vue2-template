@@ -12,6 +12,9 @@
     components: {
       HelloWorld,
     },
+    mounted() {
+      // console.log(ab)
+    },
   };
 </script>
 
