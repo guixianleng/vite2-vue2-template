@@ -4,7 +4,7 @@ import { Integrations } from '@sentry/tracing';
 import Antd from 'ant-design-vue/lib';
 import App from './App.vue';
 
-import 'ant-design-vue/dist/antd.css';
+import 'ant-design-vue/dist/antd.less';
 
 // Register icon Sprite
 import 'vite-plugin-svg-icons/register';
