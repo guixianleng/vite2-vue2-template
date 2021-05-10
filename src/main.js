@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import Antd from 'ant-design-vue/lib';
+// import Antd from 'ant-design-vue/lib';
 import App from './App.vue';
 
-import 'ant-design-vue/dist/antd.less';
+// import 'ant-design-vue/dist/antd.less';
 
 // Register icon Sprite
 import 'vite-plugin-svg-icons/register';
@@ -31,7 +31,7 @@ import 'vite-plugin-svg-icons/register';
 
 Vue.config.productionTip = false;
 
-Vue.use(Antd);
+// Vue.use(Antd);
 
 new Vue({
   render: (h) => h(App),

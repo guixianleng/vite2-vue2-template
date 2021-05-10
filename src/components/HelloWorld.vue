@@ -7,7 +7,8 @@
       <a href="https://vuejs.org/v2/guide/" target="_blank">Vue 2 Documentation</a>
     </p>
 
-    <a-button type="primary" @click="count++">count is: {{ count }}</a-button>
+    <button @click="count++">count is: {{ count }}</button>
+    <!-- <a-button type="primary" @click="count++">count is: {{ count }}</a-button> -->
     <p>
       <SvgIcon name="sun"></SvgIcon>
     </p>
