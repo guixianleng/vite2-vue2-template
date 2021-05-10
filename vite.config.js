@@ -12,9 +12,11 @@ const pathResolve = (dir) => {
 
 export default ({ mode }) => {
   const root = process.cwd();
-  const env = loadEnv(mode, root);
+  const viteEnv = loadEnv(mode, root);
 
-  console.log(env, 'env');
+  console.log(viteEnv, 'viteEnv');
+
+  const { VITE_PUBLIC_PATH, VITE_PORT, VITE_DROP_CONSOLE } = viteEnv;
 
   return defineConfig({
     resolve: {
@@ -38,13 +40,13 @@ export default ({ mode }) => {
       }),
     ],
 
-    base: './',
+    base: VITE_PUBLIC_PATH,
 
     server: {
       hmr: {
         overlay: false,
       },
-      port: 8080,
+      port: VITE_PORT,
       open: true,
       cors: true,
       // proxy: {
@@ -85,7 +87,7 @@ export default ({ mode }) => {
         compress: {
           keep_infinity: true,
           // Used to delete console in production environment
-          drop_console: true,
+          drop_console: VITE_DROP_CONSOLE,
         },
       },
       // Turning off brotliSize display can slightly reduce packaging time
