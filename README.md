@@ -166,6 +166,10 @@ npm install -g commitizen
 
 若想偷懒，建议大家用`git cz`来代替`git commit`提交代码，可以保证提交信息规范。
 
+## Vite 配置归纳
+
+- [环境变量模式设置](https://cn.vitejs.dev/guide/env-and-mode.html#modes)
+
 ## 踩坑：
 
 ### 1. git bush 无法使用箭头进行选择
@@ -184,4 +188,11 @@ npm install -g commitizen
 
 原因分析：由于`@ant-design/icons`不支持 ES Module 导出导致被 rollup-plugin-commonjs 处理了, 而 vite 正是由[ES Module](https://cn.vitejs.dev/guide/why.html#the-problems)进行预构建依赖的，而 ant-design-vue2.x 版本的 icon 组件不是内置的了，而是单独的`@ant-design/icons-vue`。
 
-解决：通过查看源码，在ant-design-vue/lib文件，对esModule进行了兼容处理，所以可以使用在文件进行引入 `import Antd from 'ant-design-vue/lib'` 解决问题
+解决：通过查看源码，在 ant-design-vue/lib 文件，对 esModule 进行了兼容处理，所以可以使用在文件进行引入 `import Antd from 'ant-design-vue/lib'` 解决问题。
+
+### 3. 定制主题
+
+问题描述：按照官网定制主题，在 `vite.config.js` 中设置[lessoptions](https://www.antdv.com/docs/vue/customize-theme-cn/)无效，而且在 main.js 中引入 `import 'ant-design-vue/dist/antd.less'` 会报错。
+
+解决方式：less依赖包的版本不能为4.x，需降级到3.x处理。
+
