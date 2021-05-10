@@ -68,11 +68,7 @@ export default ({ mode }) => {
     },
 
     optimizeDeps: {
-      include: [
-        // 'vue',
-        // 'vue-router',
-        // 'vuex'
-      ],
+      include: ['ant-design-vue/es/locale/zh_CN'],
     },
 
     // 参考https://www.pipipi.net/vite/config/#build-options
