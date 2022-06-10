@@ -17,7 +17,6 @@
     "clipboard": "^2.0.11",
     "element-ui": "^2.15.9",
     "file-saver": "^2.0.5",
-    "lodash": "^4.17.21",
     "signature_pad": "^4.0.5",
     "vue": "^2.6.12",
     "vuedraggable": "^2.24.3"
