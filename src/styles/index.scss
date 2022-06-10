@@ -1,0 +1,112 @@
+@import './reset.css';
+@import './font.scss';
+@import './variables.scss';
+@import './common.scss';
+@import './ele-overlay.scss';
+@import './mixin.scss';
+
+.page-content {
+  min-width: 0;
+  flex: 1;
+  .search-form {
+    margin-bottom: 10px;
+    padding: 20px 10px 0 10px;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+  .operate-btn {
+    background-color: #fff;
+  }
+  .table-content {
+    padding: 20px 20px 0;
+    background-color: #fff;
+  }
+}
+
+.flex-space {
+  display: flex;
+  width: 100%;
+  margin-bottom: -15px;
+}
+
+// 共用样式
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-submenu {
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-end {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.mt0 {
+  margin-top: 0;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.windth-160 {
+  width: 180px;
+}
+
+.color-white {
+  color: #fff;
+}
+
+.el-menu-demo.el-menu.el-menu--horizontal {
+  margin-left: 50px;
+  background: #0c274a;
+  border-bottom: 0;
+  .el-menu-item {
+    padding: 0 14px;
+    margin: 0 10px;
+    background: #0c274a;
+    color: #fff;
+    &:hover {
+      background: #0c274a;
+      color: #4787f0;
+    }
+    &.is-active {
+      background: #0c274a;
+      color: #4787f0;
+      border-bottom-color: #4787f0 !important;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { createVuePlugin } from 'vite-plugin-vue2';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import ViteComponents from 'vite-plugin-components';
 import viteSvgIcons from 'vite-plugin-svg-icons';
 import { resolve } from 'path';
@@ -16,15 +17,20 @@ const config = defineConfig({
       assets: pathResolve('./src/assets'),
       components: pathResolve('./src/components'),
     },
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
   },
 
   plugins: [
     createVuePlugin(),
+    vueJsx(),
     ViteComponents({ transformer: 'vue2' }),
     // 生成svg，参考https://github.com/anncwb/vite-plugin-svg-icons/blob/main/README.zh_CN.md
     viteSvgIcons({
       // 指定需要缓存的图标文件夹
-      iconDirs: [pathResolve('src/assets/icons')],
+      iconDirs: [
+        pathResolve('src/assets/icons'),
+        pathResolve('src/components/form-generator/icons'),
+      ],
       // 指定symbolId格式
       symbolId: 'icon-[dir]-[name]',
     }),
@@ -33,7 +39,7 @@ const config = defineConfig({
   base: './',
 
   server: {
-    port: 8080,
+    port: 8083,
     open: true,
     cors: true,
     // proxy: {
@@ -43,6 +49,7 @@ const config = defineConfig({
     //     rewrite: path => path.replace(/^\/api/, '')
     //   }
     // }
+    hmr: { overlay: false },
   },
 
   css: {
@@ -64,7 +71,7 @@ const config = defineConfig({
     assetsDir: 'assets',
     assetsInlineLimit: 4096,
     cssCodeSplit: true,
-    sourcemap: false,
+    sourcemap: true,
     terserOptions: {
       compress: {
         keep_infinity: true,

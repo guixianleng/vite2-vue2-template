@@ -1,0 +1,126 @@
+// 重置element组件样式
+#app {
+  .el-table {
+    color: #212121;
+    font-weight: 400;
+    margin-top: 15px;
+    thead {
+      color: #212121;
+      font-weight: 500;
+    }
+    th {
+      background-color: #f8f8f9;
+      font-weight: 600;
+      font-size: 15px;
+    }
+  }
+  .el-date-editor .el-range-separator {
+    width: 10%;
+  }
+}
+
+/* ------------------------- 自定义扩展 --------------------------------- */
+// messageBox 自定义删除弹框样式
+.normal-msg,
+.danger-msg {
+  .el-message-box {
+    &__header {
+      background: #f5f5f5;
+      border-bottom: 1px solid #dfe1e5;
+    }
+    &__title {
+      font-size: 15px;
+    }
+    &__container {
+      text-align: center;
+      padding: 10px 0 10px;
+    }
+    &__btns {
+      text-align: right;
+      padding-top: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+.danger-msg {
+  .el-message-box {
+    &__btns {
+      border-top: 1px solid #dfe1e5;
+      .el-button--primary {
+        background-color: #fa5555;
+        border-color: #fa5555;
+      }
+    }
+  }
+}
+
+/* Dialog */
+.normal-dialog {
+  .el-dialog {
+    background-color: #fff;
+    &__title {
+      color: #1e2126;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    &__header {
+      padding: 10px 20px;
+      background: #f5f5f5;
+      border-bottom: 1px solid #dfe1e5;
+    }
+    &__headerbtn {
+      font-size: 18px;
+      top: 12px;
+      color: #9ea1a8;
+    }
+    &__body {
+      padding: 24px;
+    }
+    &__footer {
+      padding: 15px;
+      border-top: 1px solid #dfe1e5;
+      text-align: center;
+    }
+  }
+}
+
+.normal-drawer {
+  .el-drawer {
+    &__header {
+      color: #1e2126;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    &__body {
+      padding: 20px 20px 0;
+      border-top: 1px solid #dfe1e5;
+    }
+  }
+  &__footer {
+    padding: 15px;
+    border-top: 1px solid #dfe1e5;
+    text-align: right;
+  }
+}
+
+/* el-button 添加type="delete" */
+.el-button {
+  &--delete {
+    border: 0;
+    color: #fa5555;
+    background: transparent;
+    padding: 0;
+    line-height: 18px;
+    min-width: 0;
+    &:hover,
+    &:focus {
+      color: #fa5555;
+      background: transparent;
+    }
+    &.is-disabled {
+      background: transparent;
+    }
+  }
+}

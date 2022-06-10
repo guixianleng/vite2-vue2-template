@@ -1,0 +1,46 @@
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(239, 239, 239);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8d8d8;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(199, 199, 199);
+}
+::-webkit-scrollbar-corner {
+  background: rgb(239, 239, 239);
+}
+
+// 路由切换过渡动画
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.3s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.operate-btn{
+  padding: 20px;
+}
+
+.special-loading {
+  .el-icon-loading {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+}

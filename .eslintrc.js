@@ -2,18 +2,17 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    es6: true,
     node: true,
   },
-  extends: [
-    "plugin:vue/essential",
-    "airbnb-base",
-    'plugin:prettier/recommended'
-  ],
+  plugins: ['prettier'],
+  extends: ['plugin:vue/essential', 'airbnb-base', 'plugin:prettier/recommended'],
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 2020,
     sourceType: 'module',
+  },
+  globals: {
+    AMap: true,
   },
   rules: {
     'import/no-unresolved': 'off',
@@ -21,14 +20,32 @@ module.exports = {
     'import/no-absolute-path': 'off',
     'import/no-extraneous-dependencies': 'off',
     'vue/no-multiple-template-root': 'off',
-    'no-param-reassign': [
-      'error',
-      {
-        props: true,
-        ignorePropertyModificationsFor: ['state', 'config']
-      }
-    ],
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    'no-param-reassign': 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-underscore-dangle': 0,
+    'no-shadow': ['error', { allow: ['state'] }],
+    'func-names': 0,
+    'import/prefer-default-export': 0,
+    'consistent-return': 0,
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'no-nested-ternary': 0,
+    'no-unneeded-ternary': 0,
+    'no-case-declarations': 0,
+    'no-plusplus': 0,
+    'no-useless-escape': 0,
+    'no-unused-expressions': 0,
+    'no-restricted-syntax': 0,
+    'no-else-return': 0,
+    'prefer-object-spread': 0,
+    'no-async-promise-executor': 0,
+    'no-lonely-if': 0,
+    'prefer-destructuring': 0,
+    'no-unused-vars': 0,
+    'array-callback-return': 0,
+    'new-cap': 0,
+    'guard-for-in': 0,
+    'no-continue': 0,
+    'no-empty': 0,
   },
-}
+};
