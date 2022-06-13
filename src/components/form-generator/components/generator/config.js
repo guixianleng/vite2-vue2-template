@@ -9,8 +9,8 @@ export const formConf = {
   gutter: 20,
   disabled: false,
   span: 24,
-  title: '表单名称',
-  description: '请填写表单描述。',
+  title: '',
+  description: '',
   formBtns: true,
   unFocusedComponentBorder: true,
 };
@@ -680,28 +680,6 @@ export const imageComponents = [
 
 // 辅助型组件 【左面板】
 export const assistComponents = [
-  {
-    typeId: 'DESC_TEXT',
-    __config__: {
-      label: '文字描述',
-      defaultValue: '描述文字',
-      displayType: true,
-      showDefaultValue: true,
-      showRequired: false,
-      showClearable: false,
-      showRegList: false,
-      tag: 'desc-text',
-      tagIcon: 'text',
-      layout: 'colFormItem',
-      span: 24,
-      required: false,
-      regList: [],
-      changeTag: false,
-    },
-    color: '',
-    textAlign: 'left',
-    style: { width: '100%' },
-  },
   {
     typeId: 'DIVIDER',
     __config__: {

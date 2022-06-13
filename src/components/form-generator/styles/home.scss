@@ -1,6 +1,6 @@
 $selectedColor: #f6f7ff;
 $lighterBlue: #409eff;
-$height: calc(100vh - 42px);
+$height: calc(100vh - 110px);
 
 .container {
   position: relative;
@@ -8,7 +8,7 @@ $height: calc(100vh - 42px);
   width: 100%;
   height: 100%;
   overflow: hidden;
-  padding: 20px 20px 0;
+  padding: 20px 12px 0;
 }
 
 .form-generator {
@@ -19,6 +19,19 @@ $height: calc(100vh - 42px);
     }
     &__bar.is-horizontal {
       display: none;
+    }
+  }
+  .header-title {
+    background-color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-radius: 4px;
+    .text {
+      font-size: 18px;
+      font-weight: 600;
     }
   }
 }
@@ -37,22 +50,20 @@ $height: calc(100vh - 42px);
     height: 100%;
   }
   .center-tabs {
-    padding: 0 20px;
+    padding: 0 15px;
   }
 }
 
+.right-scroll,
 .left-scrollbar {
-  padding: 10px 0;
-}
-
-.center-scrollbar {
-  padding: 20px 0;
+  .el-scrollbar__view {
+    margin-bottom: 50px;
+  }
 }
 
 .components-list {
-  padding: 8px;
+  padding: 0 12px;
   box-sizing: border-box;
-  height: 100%;
   .components-item {
     display: inline-block;
     width: 48%;
@@ -69,15 +80,22 @@ $height: calc(100vh - 42px);
 .components-title {
   font-size: 14px;
   color: #222;
-  padding: 10px 2px;
+  padding: 10px 5px;
   margin-bottom: 10px;
   text-align: left;
   cursor: pointer;
   border: 1px dashed #ccc;
   border-radius: 4px;
   margin-right: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  // max-width: 250px;
   &:hover {
+    border-color: $lighterBlue;
     background-color: #f6f7ff;
+    color: $lighterBlue;
   }
   .svg-icon {
     color: #666;
@@ -96,16 +114,16 @@ $height: calc(100vh - 42px);
   white-space: nowrap;
   text-overflow: ellipsis;
   word-break: keep-all;
-  max-width: 150px;
+  max-width: 170px;
   .svg-icon {
     color: #777;
     font-size: 15px;
   }
   &:hover {
-    border: 1px dashed #787be8;
-    color: #787be8;
+    border: 1px dashed $lighterBlue;
+    color: $lighterBlue;
     .svg-icon {
-      color: #787be8;
+      color: $lighterBlue;
     }
   }
 }
@@ -122,7 +140,7 @@ $height: calc(100vh - 42px);
 }
 
 .center-board-row {
-  padding: 12px 12px 15px 12px;
+  padding: 12px 15px;
   box-sizing: border-box;
   & > .el-form {
     // 69 = 12+15+42

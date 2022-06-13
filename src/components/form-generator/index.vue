@@ -1,31 +1,39 @@
 <template>
   <div class="container form-generator">
+    <div class="header-title">
+      <div class="text">{{ title }}</div>
+      <el-button type="primary" @click="AssembleFormData" size="small">提交创建</el-button>
+    </div>
     <el-row :gutter="20">
       <el-col :span="5">
-        <el-tabs
-          :value="currentTab"
-          class="center-tabs"
-          @tab-click="handleTabChange"
-          v-if="tabList.length"
-        >
-          <el-tab-pane
-            :label="item.label"
-            :name="item.value"
-            v-for="(item, indx) in tabList"
-            :key="indx"
+        <div class="left-scrollbar">
+          <el-tabs
+            :value="currentTab"
+            class="center-tabs"
+            @tab-click="handleTabChange"
+            v-if="tabList.length"
+          >
+            <el-tab-pane
+              :label="item.label"
+              :name="item.name"
+              v-for="(item, indx) in tabList"
+              :key="indx"
+            >
+            </el-tab-pane>
+          </el-tabs>
+          <left-panel
+            :components-list="leftComponents"
+            @add-click="addComponent"
+            @end="onEnd"
+            v-show="currentTab === 'form'"
           />
-        </el-tabs>
-        <left-panel
-          :components-list="leftComponents"
-          @add-click="addComponent"
-          @end="onEnd"
-          v-show="currentTab === 'component'"
-        />
+        </div>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="14">
         <div class="center-scrollbar">
           <el-scrollbar>
             <el-row class="center-board-row" :gutter="formConf.gutter">
+              <head-desc :formDesc.sync="formConf" />
               <el-form
                 :size="formConf.size"
                 :label-position="formConf.labelPosition"
@@ -59,7 +67,7 @@
           </el-scrollbar>
         </div>
       </el-col>
-      <el-col :span="7">
+      <el-col :span="5">
         <right-panel
           :active-data="activeData"
           :form-conf="formConf"
@@ -82,6 +90,7 @@
   import RightPanel from './RightPanel';
   import LeftPanel from './LeftPanel';
   import DraggableItem from './DraggableItem';
+  import HeadDesc from './HeadDesc';
 
   import {
     assistComponents,
@@ -105,7 +114,7 @@
   } from '@/components/form-generator/components/generator/html';
   import { makeUpJs } from '@/components/form-generator/components/generator/js';
   import { makeUpCss } from '@/components/form-generator/components/generator/css';
-  import drawingDefalut from '@/components/form-generator/components/generator/drawingDefalut';
+  import drawingDefault from '@/components/form-generator/components/generator/drawingDefault';
 
   import {
     getDrawingList,
@@ -128,6 +137,7 @@
       LeftPanel,
       RightPanel,
       DraggableItem,
+      HeadDesc,
     },
     props: {
       // 其他自定义组件
@@ -143,23 +153,27 @@
       // 当前tab
       currentTab: {
         type: String,
-        default: 'component',
+        default: 'form',
+      },
+      title: {
+        type: String,
+        default: '创建自定义填报式台账',
       },
     },
     data() {
       return {
         idGlobal,
         formConf,
-        drawingList: drawingDefalut,
+        drawingList: drawingDefault,
         drawingData: {},
-        activeId: drawingDefalut[0].formId,
+        activeId: drawingDefault.length != 0 ? drawingDefault[0].formId : 0,
         drawerVisible: false,
         formData: {},
         dialogVisible: false,
         jsonDrawerVisible: false,
         generateConf: null,
         showFileName: false,
-        activeData: drawingDefalut[0],
+        activeData: null,
         saveDrawingListDebounce: debounce(340, saveDrawingList),
         saveIdGlobalDebounce: debounce(340, saveIdGlobal),
         defaultComponents: [
@@ -227,9 +241,9 @@
       if (Array.isArray(drawingListInDB) && drawingListInDB.length > 0) {
         this.drawingList = drawingListInDB;
       } else {
-        this.drawingList = drawingDefalut;
+        this.drawingList = drawingDefault;
       }
-      this.activeFormItem(this.drawingList[0]);
+      this.activeFormItem(this.drawingList.length ? this.drawingList[0] : null);
       if (formConfInDB) {
         this.formConf = formConfInDB;
       }
@@ -249,7 +263,9 @@
       });
     },
     methods: {
-      handleTabChange(tab) {},
+      handleTabChange(tab) {
+        this.$emit('update:currentTab', tab.name);
+      },
       setObjectValueReduce(obj, strKeys, data) {
         const arr = strKeys.split('.');
         arr.reduce((pre, item, i) => {
@@ -295,6 +311,7 @@
         }
       },
       activeFormItem(currentItem) {
+        if (!currentItem) return;
         this.activeData = currentItem;
         this.activeId = currentItem.__config__.formId;
       },
@@ -341,6 +358,7 @@
           fields: deepClone(this.drawingList),
           ...this.formConf,
         };
+        console.log(this.formData, 'this.formData');
       },
       generate(data) {
         const func = this[`exec${titleCase(this.operationType)}`];

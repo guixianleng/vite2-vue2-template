@@ -5,7 +5,7 @@
       <el-tab-pane label="表单属性" name="form" />
     </el-tabs>
     <el-scrollbar>
-      <div class="field-box">
+      <div class="field-box" v-if="activeData">
         <!-- 组件属性 -->
         <el-form v-show="currentTab === 'field' && showField" size="small" label-width="90px">
           <el-form-item v-if="activeData.__config__.changeTag" label="组件类型">
@@ -731,7 +731,7 @@
     <treeNode-dialog :visible.sync="dialogVisible" title="添加选项" @commit="addNode" />
     <icons-dialog
       :visible.sync="iconsVisible"
-      :current="activeData[currentIconModel]"
+      :current="activeData && activeData[currentIconModel]"
       @select="setIcon"
     />
   </div>
@@ -867,14 +867,9 @@
       };
     },
     computed: {
-      documentLink() {
-        return (
-          this.activeData.__config__.document ||
-          'https://element.eleme.cn/#/zh-CN/component/installation'
-        );
-      },
       dateOptions() {
         if (
+          this.activeData &&
           this.activeData.type !== undefined &&
           this.activeData.__config__.tag === 'el-date-picker'
         ) {
@@ -898,7 +893,7 @@
         ];
       },
       activeTag() {
-        return this.activeData.__config__.tag;
+        return this.activeData && this.activeData.__config__.tag;
       },
       isShowMin() {
         return ['el-input-number', 'el-slider'].indexOf(this.activeTag) > -1;
@@ -1064,9 +1059,6 @@
       position: relative;
       box-sizing: border-box;
       padding: 0 20px;
-    }
-    .el-scrollbar {
-      height: 100%;
     }
   }
   .select-item {

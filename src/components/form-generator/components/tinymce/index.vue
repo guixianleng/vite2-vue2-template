@@ -1,5 +1,7 @@
 <template>
-  <textarea :id="tinymceId" style="visibility: hidden;" />
+  <div style="min-height: 100px; height: auto; width: 100%;" v-loading="loading">
+    <textarea :id="tinymceId" style="visibility: hidden;" />
+  </div>
 </template>
 
 <script>
@@ -26,6 +28,7 @@
       return {
         tinymceId: this.id,
         langName: 'zh_CN',
+        loading: true,
       };
     },
     mounted() {
@@ -57,6 +60,7 @@
           this.vModel(editor);
         };
         tinymce.init(conf);
+        this.loading = false;
       });
     },
     destroyed() {

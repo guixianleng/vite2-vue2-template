@@ -1,7 +1,6 @@
 import { deepClone } from '@/components/form-generator/utils/index';
 import SignPad from '../ThirdComp/SignPad/index.vue';
 import PhoneVerification from '../ThirdComp/PhoneVerification/index.vue';
-import DescText from '../ThirdComp/DescText/index.vue';
 import ImageSelect from '../ThirdComp/ImageSelect/index.vue';
 import InputMap from '../ThirdComp/InputMap/index.vue';
 import pagination from '../ThirdComp/pagination/index.vue';
@@ -137,7 +136,6 @@ export default {
   components: {
     SignPad,
     PhoneVerification,
-    DescText,
     ImageSelect,
     InputMap,
     pagination,

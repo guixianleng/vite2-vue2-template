@@ -7,6 +7,7 @@
       v-on="$listeners"
       @open="onOpen"
       @close="onClose"
+      class="normal-dialog"
     >
       <div slot="title">
         选择图标
@@ -34,101 +35,99 @@
   </div>
 </template>
 <script>
-import iconList from '@/components/form-generator/utils/icon.json'
+  import iconList from '@/components/form-generator/utils/icon.json';
 
-const originList = iconList.map(name => `el-icon-${name}`)
+  const originList = iconList.map((name) => `el-icon-${name}`);
 
-export default {
-  inheritAttrs: false,
-  props: ['current'],
-  data() {
-    return {
-      iconList: originList,
-      active: null,
-      key: ''
-    }
-  },
-  watch: {
-    key(val) {
-      if (val) {
-        this.iconList = originList.filter(name => name.indexOf(val) > -1)
-      } else {
-        this.iconList = originList
-      }
-    }
-  },
-  methods: {
-    onOpen() {
-      this.active = this.current
-      this.key = ''
-      this.scrollToActive()
+  export default {
+    inheritAttrs: false,
+    props: ['current'],
+    data() {
+      return {
+        iconList: originList,
+        active: null,
+        key: '',
+      };
     },
-    onClose() {},
-    onSelect(icon) {
-      this.active = icon
-      this.$emit('select', icon)
-      this.$emit('update:visible', false)
+    watch: {
+      key(val) {
+        if (val) {
+          this.iconList = originList.filter((name) => name.indexOf(val) > -1);
+        } else {
+          this.iconList = originList;
+        }
+      },
     },
-    scrollToActive() {
-      this.$nextTick(() => {
-        const $activeItem = this.active
-          ? document.getElementsByClassName('active-item')[0]
-          : this.$refs.iconWrap.childNodes[0]
-        $activeItem
-          && $activeItem.scrollIntoView
-          && $activeItem.scrollIntoView()
-      })
-    }
-  }
-}
+    methods: {
+      onOpen() {
+        this.active = this.current;
+        this.key = '';
+        this.scrollToActive();
+      },
+      onClose() {},
+      onSelect(icon) {
+        this.active = icon;
+        this.$emit('select', icon);
+        this.$emit('update:visible', false);
+      },
+      scrollToActive() {
+        this.$nextTick(() => {
+          const $activeItem = this.active
+            ? document.getElementsByClassName('active-item')[0]
+            : this.$refs.iconWrap.childNodes[0];
+          $activeItem && $activeItem.scrollIntoView && $activeItem.scrollIntoView();
+        });
+      },
+    },
+  };
 </script>
 <style lang="scss" scoped>
-.icon-ul {
-  margin: 0;
-  padding: 0;
-  font-size: 0;
-  li {
-    list-style-type: none;
-    text-align: center;
-    font-size: 14px;
-    display: inline-block;
-    width: 16.66%;
-    box-sizing: border-box;
-    height: 108px;
-    padding: 15px 6px 6px 6px;
-    cursor: pointer;
-    overflow: hidden;
-    &:hover {
-      background: #f2f2f2;
-    }
-    &.active-item {
-      background: #e1f3fb;
-      color: #7a6df0;
-    }
-    > i {
-      font-size: 30px;
-      line-height: 50px;
-    }
-  }
-}
-.icon-dialog {
-  ::v-deep .el-dialog {
-    border-radius: 8px;
-    margin-bottom: 0;
-    margin-top: 4vh !important;
-    display: flex;
-    flex-direction: column;
-    max-height: 92vh;
-    overflow: hidden;
-    box-sizing: border-box;
-    .el-dialog__header {
-      padding-top: 14px;
-    }
-    .el-dialog__body {
-      margin: 0 20px 20px 20px;
-      padding: 0;
-      overflow: auto;
+  .icon-ul {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    li {
+      list-style-type: none;
+      text-align: center;
+      font-size: 14px;
+      display: inline-block;
+      width: 16.66%;
+      box-sizing: border-box;
+      height: 108px;
+      padding: 15px 6px 6px 6px;
+      cursor: pointer;
+      overflow: hidden;
+      &:hover {
+        background: #f2f2f2;
+      }
+      &.active-item {
+        background: #e1f3fb;
+        color: #7a6df0;
+      }
+      > i {
+        font-size: 30px;
+        line-height: 50px;
+      }
     }
   }
-}
+  .icon-dialog {
+    ::v-deep .el-dialog {
+      border-radius: 8px;
+      margin-bottom: 0;
+      margin-top: 4vh !important;
+      display: flex;
+      flex-direction: column;
+      max-height: 92vh;
+      overflow: hidden;
+      box-sizing: border-box;
+      .el-dialog__header {
+        padding-top: 14px;
+      }
+      .el-dialog__body {
+        margin: 0 20px 20px 20px;
+        padding: 0;
+        overflow: auto;
+      }
+    }
+  }
 </style>

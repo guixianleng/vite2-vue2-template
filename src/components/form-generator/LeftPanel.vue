@@ -1,49 +1,49 @@
 <template>
-  <div class="left-scrollbar">
-    <el-scrollbar>
-      <div class="components-list">
-        <div v-for="(item, listIndex) in componentsList" :key="listIndex">
-          <div class="components-title" @click="handleCollapse(item)">
-            <i :class="`el-icon-caret-${!item.collapse ? 'bottom' : 'top'}`"></i>
-            <span>{{ item.title }}</span>
-          </div>
-          <el-collapse-transition>
-            <div v-show="!item.collapse">
-              <draggable
-                class="components-draggable"
-                :list="item.list"
-                :group="{ name: 'componentsGroup', pull: 'clone', put: false }"
-                :clone="cloneComponent"
-                draggable=".components-item"
-                :sort="false"
-                @end="onEnd"
-              >
-                <div
-                  v-for="(element, index) in item.list"
-                  :key="index"
-                  class="components-item"
-                  @click="addComponent(element)"
-                >
-                  <div class="components-body">
-                    <svg-icon :icon-class="element.__config__.tagIcon" />
-                    {{ element.__config__.label }}
-                  </div>
-                </div>
-              </draggable>
-            </div>
-          </el-collapse-transition>
+  <el-scrollbar>
+    <div class="components-list">
+      <div v-for="(item, listIndex) in componentsList" :key="listIndex">
+        <div class="components-title" @click="handleCollapse(item)">
+          <i :class="`el-icon-caret-${!item.collapse ? 'bottom' : 'top'}`"></i>
+          <span>{{ item.title }}</span>
         </div>
+        <el-collapse-transition>
+          <div v-show="!item.collapse">
+            <draggable
+              class="components-draggable"
+              :list="item.list"
+              :group="{ name: 'componentsGroup', pull: 'clone', put: false }"
+              :clone="cloneComponent"
+              draggable=".components-item"
+              :sort="false"
+              @end="onEnd"
+            >
+              <div
+                v-for="(element, index) in item.list"
+                :key="index"
+                class="components-item"
+                @click="addComponent(element)"
+              >
+                <div class="components-body">
+                  <svg-icon :icon-class="element.__config__.tagIcon" />
+                  {{ element.__config__.label }}
+                </div>
+              </div>
+            </draggable>
+          </div>
+        </el-collapse-transition>
       </div>
-    </el-scrollbar>
-  </div>
+    </div>
+  </el-scrollbar>
 </template>
 <script>
   import draggable from 'vuedraggable';
+  import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
 
   export default {
     name: 'LeftPanel',
     components: {
       draggable,
+      [CollapseTransition.name]: CollapseTransition,
     },
     props: {
       // 当前组件列表
@@ -52,16 +52,6 @@
         default: () => [],
       },
     },
-    // computed: {
-    //   compLists() {
-    //     return this.componentsList.map((item) => {
-    //       return {
-    //         ...item,
-    //         collapse: false,
-    //       };
-    //     });
-    //   },
-    // },
     methods: {
       addComponent(item) {
         this.$emit('add-click', item);
