@@ -151,7 +151,7 @@ export const inputComponents = [
   {
     typeId: 'NUMBER_INPUT',
     __config__: {
-      label: '计数器',
+      label: '数值',
       showLabel: true,
       changeTag: true,
       labelWidth: null,
@@ -175,7 +175,7 @@ export const inputComponents = [
   },
   {
     __config__: {
-      label: '编辑器',
+      label: '富文本',
       showLabel: true,
       changeTag: true,
       labelWidth: null,
