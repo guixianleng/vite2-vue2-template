@@ -15,7 +15,7 @@ export const formConf = {
   unFocusedComponentBorder: true,
 };
 
-const BASE_URL = import.meta.env.VITE_GLOB_API_URL
+const BASE_URL = import.meta.env.VITE_GLOB_API_URL;
 
 // 组件默认值
 export const componentDefaultValue = {
@@ -186,12 +186,12 @@ export const inputComponents = [
       layout: 'colFormItem',
       required: true,
       regList: [],
-      document: 'http://tinymce.ax-z.cn'
+      document: 'http://tinymce.ax-z.cn',
     },
     placeholder: '请输入',
     height: 300, // 编辑器高度
-    branding: false // 隐藏右下角品牌烙印
-  }
+    branding: false, // 隐藏右下角品牌烙印
+  },
 ];
 
 // 选择型组件 【左面板】
@@ -578,7 +578,7 @@ export const selectComponents = [
     __slot__: {
       'list-type': true,
     },
-    action: '/project/file/upload/',
+    action: BASE_URL + '/project/file/upload/',
     disabled: false,
     accept: '',
     name: 'file',
@@ -911,24 +911,24 @@ export const personalInfoComponents = [
     placeholder: '请选择位置',
     style: { width: '100%' },
   },
-  {
-    typeId: 'PHONE_VERIFICATION',
-    __config__: {
-      label: '手机号验证',
-      labelWidth: null,
-      showLabel: true,
-      changeTag: false,
-      tag: 'phone-verification',
-      tagIcon: 'input',
-      defaultValue: undefined,
-      required: true,
-      layout: 'colFormItem',
-      span: 24,
-      showRegList: false,
-      regList: [],
-      document: 'https://element.eleme.cn/#/zh-CN/component/input',
-    },
-    placeholder: '请验证手机号',
-    style: { width: '100%' },
-  },
+  // {
+  //   typeId: 'PHONE_VERIFICATION',
+  //   __config__: {
+  //     label: '手机号验证',
+  //     labelWidth: null,
+  //     showLabel: true,
+  //     changeTag: false,
+  //     tag: 'phone-verification',
+  //     tagIcon: 'input',
+  //     defaultValue: undefined,
+  //     required: true,
+  //     layout: 'colFormItem',
+  //     span: 24,
+  //     showRegList: false,
+  //     regList: [],
+  //     document: 'https://element.eleme.cn/#/zh-CN/component/input',
+  //   },
+  //   placeholder: '请验证手机号',
+  //   style: { width: '100%' },
+  // },
 ];

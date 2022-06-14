@@ -24,12 +24,7 @@
         </el-form-item>
         <el-form-item label="验证码" prop="code">
           <el-input v-model="phoneValidateForm.code" class="input" prefix-icon="el-icon-message">
-            <el-button
-              slot="append"
-              :disabled="phoneValidateCodeBtn"
-              type="primary"
-              @click="sendValidateMsgHandle"
-            >
+            <el-button slot="append" :disabled="phoneValidateCodeBtn" type="primary" @click="sendValidateMsgHandle">
               {{ phoneValidateCodeBtnText }}
             </el-button>
           </el-input>
@@ -97,22 +92,20 @@
         this.$refs['form'].validateField('phoneNumber', (err) => {
           if (!err) {
             this.phoneValidateCodeBtn = true;
-            this.$api
-              .get(`/project/phone/code?phoneNumber=${this.phoneValidateForm.phoneNumber}`)
-              .then(() => {
-                this.msgSuccess('验证码发送成功，5分钟内有效');
-                this.phoneValidateCodeBtn = true;
-                let count = 60;
-                let timer = setInterval(() => {
-                  count--;
-                  this.phoneValidateCodeBtnText = count + 's后重新发送';
-                  if (count == 0) {
-                    this.phoneValidateCodeBtnText = '发送验证码';
-                    this.phoneValidateCodeBtn = false;
-                    clearInterval(timer);
-                  }
-                }, 1000);
-              });
+            this.$api.get(`/project/phone/code?phoneNumber=${this.phoneValidateForm.phoneNumber}`).then(() => {
+              this.msgSuccess('验证码发送成功，5分钟内有效');
+              this.phoneValidateCodeBtn = true;
+              let count = 60;
+              let timer = setInterval(() => {
+                count--;
+                this.phoneValidateCodeBtnText = count + 's后重新发送';
+                if (count == 0) {
+                  this.phoneValidateCodeBtnText = '发送验证码';
+                  this.phoneValidateCodeBtn = false;
+                  clearInterval(timer);
+                }
+              }, 1000);
+            });
           }
         });
       },

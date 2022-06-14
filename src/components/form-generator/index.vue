@@ -1,10 +1,10 @@
 <template>
-  <div class="container form-generator">
+  <div class="form-generator">
     <div class="header-title">
       <div class="text">{{ title }}</div>
       <el-button type="primary" @click="AssembleFormData" size="small">提交创建</el-button>
     </div>
-    <el-row :gutter="20">
+    <el-row>
       <el-col :span="5">
         <div class="left-scrollbar">
           <el-tabs
@@ -33,7 +33,7 @@
         <div class="center-scrollbar">
           <el-scrollbar>
             <el-row class="center-board-row" :gutter="formConf.gutter">
-              <head-desc :formDesc.sync="formConf" />
+              <head-desc :formDesc.sync="formConf" v-if="showHeader" />
               <el-form
                 :size="formConf.size"
                 :label-position="formConf.labelPosition"
@@ -157,7 +157,11 @@
       },
       title: {
         type: String,
-        default: '创建自定义填报式台账',
+        default: '创建自定义表单',
+      },
+      showHeader: {
+        type: Boolean,
+        default: false,
       },
     },
     data() {
@@ -353,12 +357,13 @@
         }
         return item;
       },
-      AssembleFormData() {
+      async AssembleFormData() {
         this.formData = {
           fields: deepClone(this.drawingList),
           ...this.formConf,
         };
         console.log(this.formData, 'this.formData');
+        this.$emit('submit', { generateFields: this.formData });
       },
       generate(data) {
         const func = this[`exec${titleCase(this.operationType)}`];
@@ -466,5 +471,6 @@
 </script>
 
 <style lang="scss">
+  @import './styles/index';
   @import './styles/home';
 </style>

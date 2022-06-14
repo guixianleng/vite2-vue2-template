@@ -15,10 +15,10 @@
       return {
         currentTab: 'form',
         tabList: [
-          {
-            label: '设 置',
-            name: 'setting',
-          },
+          // {
+          //   label: '设 置',
+          //   name: 'setting',
+          // },
           {
             label: '表 单',
             name: 'form',

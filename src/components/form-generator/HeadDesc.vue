@@ -1,23 +1,12 @@
 <template>
   <div class="head-desc">
     <div class="head-title">
-      <el-input
-        placeholder="请输入标题"
-        class="head-title_input"
-        v-model="headForm.title"
-        clearable
-        v-if="titleEdit"
-      >
-      </el-input>
+      <el-input placeholder="请输入标题" class="head-title_input" v-model="headForm.title" clearable v-if="titleEdit"> </el-input>
       <div v-else @click="editTitle = true" v-html="headForm.title" />
     </div>
     <div class="head-rich">
-      <Tinymce
-        v-if="richEdit"
-        v-model="headForm.description"
-        placeholder="请输入描述（选填），介绍背景或政策说明等"
-      />
-      <div v-else @click="editRich = true" v-html="headForm.description" />
+      <Tinymce v-if="richEdit" v-model="headForm.description" placeholder="请输入描述（选填），介绍背景或政策说明等" />
+      <div v-else @click="editRich = true" class="head-rich_desc" v-html="headForm.description" />
     </div>
   </div>
 </template>
@@ -74,8 +63,8 @@
 
 <style lang="scss">
   .head-desc {
-    padding: 0 15px;
     margin-bottom: 20px;
+    padding: 0 12px;
     .head-title {
       margin-bottom: 10px;
       &_input {
@@ -90,6 +79,11 @@
       font-weight: 600;
       color: #333;
       text-align: center;
+    }
+    .head-rich {
+      &_desc {
+        line-height: 24px;
+      }
     }
   }
 </style>
